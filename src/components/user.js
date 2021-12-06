@@ -1,7 +1,7 @@
-const User = ({userId, userName}) => {
+const User = ({userId, userName, approved, approveUser}) => {
     return (
         <div>
-            <ul>{userId} - {userName}</ul>
+            <ul>{userId} - {userName}: {approved ? ' Approved' : <input type="checkbox" onClick={ _ => (approveUser())} />}</ul>
         </div>
     );
 };
