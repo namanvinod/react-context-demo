@@ -4,12 +4,18 @@ import { useState } from 'react';
 
 const AddUser = () => {
     const { userEvents, approvedUsersDispatch } = useContext(AppContext);
-    const [name, setName] = useState('');
+    const [newUser, setNewUser] = useState('');
+    
+    const addNewUser = () => {
+        if(!newUser) return;
+        userEvents('ADD_USER', { newUser });
+        setNewUser('');
+    }
 
     return (
         <div className="container">
-            <input type="text" value={name} onChange={(event => setName(event.target.value))}/>
-            <button onClick={ _ => userEvents('ADD_USER', { newUser: name })}> Add User </button>
+            <input type="text" value={newUser} onChange={(event => setNewUser(event.target.value))}/>
+            <button onClick={ _ => addNewUser()}> Add New User </button>
             <button onClick={ _ => approvedUsersDispatch({ type: 'RESET_APPROVED_USERS' })} > Reset Approved Users </button> 
         </div>
     );

@@ -16,8 +16,9 @@ const App = () => {
         return [];
       default: 
         return;
-    }
-  }
+    };
+  };
+  
   const [ users, setUsers ] = useState(['Admin', 'NV', 'ASD']);
   const [approvedUsers, approvedUsersDispatch] = useReducer(approvedUserReducer, initState);
 
