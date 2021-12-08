@@ -6,19 +6,16 @@ import AddUser from './components/addUser';
 
 import './App.css';
 
-const App = () => {
-  const initState = ['Admin'];
-  const approvedUserReducer = (state, { type, payload }) => {
-    switch(type) {
-      case 'ADD_APPROVED_USER': 
-        return [...state, payload];
-      case 'RESET_APPROVED_USERS': 
-        return [];
-      default: 
-        return;
-    };
-  };
+const initState = ['Admin'];
+const approvedUserReducer = (state, { type, payload }) => {
+  switch(type) {
+    case 'ADD_APPROVED_USER': return [...state, payload];
+    case 'RESET_APPROVED_USERS': return [];
+    default: return;
+  }
+};
   
+const App = () => {
   const [ users, setUsers ] = useState(['Admin', 'NV', 'ASD']);
   const [approvedUsers, approvedUsersDispatch] = useReducer(approvedUserReducer, initState);
 
