@@ -8,10 +8,10 @@ import './App.css';
 
 const App = () => {
   const initState = ['Admin'];
-  const approvedUserReducer = (state, action) => {
-    switch(action.type) {
+  const approvedUserReducer = (state, { type, payload }) => {
+    switch(type) {
       case 'ADD_APPROVED_USER': 
-        return [...state, action.payload];
+        return [...state, payload];
       case 'RESET_APPROVED_USERS': 
         return [];
       default: 
